@@ -1,23 +1,60 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useContext } from 'react';
 import './App.css';
+import { Store  } from "./store";
+import axios from "axios";
 
 function App() {
+  // const globalState = useContext(store);
+  // const { dispatch, state } = globalState;
+  const [state, dispatch] = useContext(Store)
+
+  const fetchAndDispatchTrivia = () => {
+    dispatch({ type: "FETCH_TRIVIA_START" })
+    const questions = [];
+
+    axios.get("https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple")
+      .then(response => {
+        const easyQuestions = response.data.results;
+        questions.push(...easyQuestions);
+        return axios.get("https://opentdb.com/api.php?amount=10&difficulty=medium&type=multiple")
+      })
+      .then(response => {
+        const mediumQuestions = response.data.results;
+        questions.push(...mediumQuestions);
+        return axios.get("https://opentdb.com/api.php?amount=10&difficulty=hard&type=multiple")
+      })
+      .then(response => {
+        const hardQuestions = response.data.results;
+        questions.push(...hardQuestions);
+
+        dispatch({
+          type: "FETCH_TRIVIA_SUCCESS",
+          payload: questions,
+        });
+      })
+      .catch(error => {
+        dispatch({ type: "FETCH_TRIVIA_FAILURE", payload: error})
+      })
+  }
+
+  const clickMe = () => {
+    return(
+      <p
+        onClick={fetchAndDispatchTrivia}
+      >
+        Click me to fetch trivia
+      </p>
+    )
+  }
+
+  const pleaseWait = () => {
+    return <p>Please wait, fetching trivia...</p>
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {state.isFetching? pleaseWait() : clickMe()}
       </header>
     </div>
   );
