@@ -12,9 +12,7 @@ const GamePage = () => {
     }
   }
 
-  useEffect(() => {
-    goBackHome();
-  }, [])
+  useEffect(goBackHome, [])
 
   return(
     <div>
