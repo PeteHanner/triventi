@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { Store } from "../../store.js";
 import { useHistory } from 'react-router-dom';
+import TriviaCard from './TriviaCard.jsx';
 
 const GamePage = () => {
   const [state, dispatch] = useContext(Store);
@@ -15,8 +16,8 @@ const GamePage = () => {
   useEffect(goBackHome, [])
 
   return(
-    <div>
-      {JSON.stringify(state.questions)}
+    <div className='main-window'>
+      <TriviaCard />
     </div>
   )
 }
