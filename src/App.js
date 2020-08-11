@@ -1,10 +1,15 @@
 import React from 'react';
-import './App.css';
-import WelcomePage from './components/WelcomePage';
+import './App.scss';
+import { Switch, Route } from 'react-router-dom';
+import WelcomePage from './components/root/WelcomePage';
+import GamePage from './components/play/GamePage';
 
 function App() {
   return(
-    <WelcomePage />
+    <Switch>
+      <Route path='/' component={WelcomePage} exact />
+      <Route path='/play' component={GamePage} />
+    </Switch>
   )
 }
 
