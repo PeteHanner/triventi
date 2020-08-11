@@ -1,10 +1,12 @@
-import React, { useContext } from 'react';
-import { Store } from "../store.js";
+import React, { useContext, Fragment } from 'react';
+import { Store } from "../../store.js";
 import axios from "axios";
-import { Button, Dimmer, Loader } from 'semantic-ui-react'
+import { Button, Loader } from 'semantic-ui-react'
+import { useHistory } from 'react-router-dom';
 
-const WelcomePage = () => {
-  const [state, dispatch] = useContext(Store)
+const ImportTriviaButton = () => {
+  const [state, dispatch] = useContext(Store);
+  const history = useHistory();
 
   const loadTrivia = () => {
     dispatch({ type: "FETCH_TRIVIA_START" })
@@ -29,6 +31,8 @@ const WelcomePage = () => {
           type: "FETCH_TRIVIA_SUCCESS",
           payload: questions,
         });
+
+        history.push('/play')
       })
       .catch(error => {
         dispatch({ type: "FETCH_TRIVIA_FAILURE", payload: error })
@@ -48,19 +52,15 @@ const WelcomePage = () => {
 
   const pleaseWait = () => {
     return (
-      <Dimmer active>
-        <Loader inverted indeterminate>Loading trivia...</Loader>
-      </Dimmer>
+      <Loader active inline indeterminate>Loading trivia...</Loader>
     );
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        {state.isFetching ? pleaseWait() : clickMe()}
-      </header>
-    </div>
+    <Fragment>
+      {state.isFetching ? pleaseWait() : clickMe()}
+    </Fragment>
   );
 }
 
-export default WelcomePage
+export default ImportTriviaButton
