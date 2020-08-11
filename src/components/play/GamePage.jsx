@@ -7,17 +7,19 @@ const GamePage = () => {
   const [state, dispatch] = useContext(Store);
   const history = useHistory();
 
-  const goBackHome = () => {
+  const returnHomeIfQuestionsNotLoaded = () => {
     if (state.questions.length < 30) {
       history.push('/')
     }
   }
 
-  useEffect(goBackHome, [])
+  useEffect(returnHomeIfQuestionsNotLoaded, [])
 
   return(
     <div className='main-window'>
-      <TriviaCard />
+      <TriviaCard
+        questionIdx={state.currentQuestionIdx}
+      />
     </div>
   )
 }

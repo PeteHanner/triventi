@@ -5,7 +5,7 @@ import ImportTriviaButton from './ImportTriviaButton';
 const WelcomePage = () => {
   return(
     <div className='main-window'>
-      <Header as='h1'>
+      <Header as='h1' className="white">
         Welcome to Triventi!
       </Header>
 

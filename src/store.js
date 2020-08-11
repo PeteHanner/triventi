@@ -3,21 +3,23 @@ import React, { createContext, useReducer } from "react";
 const initialState = {
   isFetching: false,
   questions: [],
-  currentQuestion: 0,
+  currentQuestionIdx: 0,
 };
 
 const Reducer = (state, action) => {
   switch (action.type) {
   case "FETCH_TRIVIA_START":
-    console.log("Fetching trivia");
     return {...state, isFetching: true}
   case "FETCH_TRIVIA_SUCCESS":
-    console.log(action.payload);
     return {...state, isFetching: false, questions: action.payload}
   case "FETCH_TRIVIA_FAILURE":
     const error = action.payload
     alert(`There was an error fetching trivia: ${error.message}. Please try again.`)
     break;
+  case "QUESTION_CORRECT":
+      return {...state, currentQuestionIdx: state.currentQuestionIdx + 1}
+  case "QUESTION_INCORRECT":
+      return {...state, currentQuestionIdx: state.currentQuestionIdx + 1}
   default:
     throw new Error();
   }

@@ -1,7 +1,18 @@
-import React from 'react';
+import React, {useContext, useEffect} from 'react';
+import { Store } from "../../store.js";
 import { Card, Header, Button } from "semantic-ui-react";
 
-const TriviaCard = () => {
+const TriviaCard = ({questionIdx}) => {
+  const [state, dispatch] = useContext(Store);
+  const questionObj = state.questions[questionIdx];
+
+  const shuffleOptions = () => {
+    const orderedOptions = [questionObj.correct_answer, ...questionObj.incorrect_answers];
+    console.log(orderedOptions)
+    const options = [];
+  }
+
+  useEffect(shuffleOptions, [])
 
   return(
     <Card>
