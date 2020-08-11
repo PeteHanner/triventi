@@ -3,6 +3,7 @@ import React, { createContext, useReducer } from "react";
 const initialState = {
   isFetching: false,
   questions: [],
+  currentQuestion: 0,
 };
 
 const Reducer = (state, action) => {
