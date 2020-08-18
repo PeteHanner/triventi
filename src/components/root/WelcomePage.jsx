@@ -1,13 +1,13 @@
 import React from 'react';
-import { Header } from 'semantic-ui-react'
 import ImportTriviaButton from './ImportTriviaButton';
+import { Heading } from '@chakra-ui/core';
 
 const WelcomePage = () => {
   return(
     <div className='main-window'>
-      <Header as='h1' className="white">
+      <Heading as='h1' className="white">
         Welcome to Triventi!
-      </Header>
+      </Heading>
 
       <ImportTriviaButton/>
     </div>

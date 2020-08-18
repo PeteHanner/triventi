@@ -8,7 +8,7 @@ const GamePage = () => {
   const history = useHistory();
 
   const returnHomeIfQuestionsNotLoaded = () => {
-    if (state.questions.length < 30) {
+    if (state.questions.length !== 30) {
       history.push('/')
     }
   }
