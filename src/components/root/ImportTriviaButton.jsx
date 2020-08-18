@@ -1,8 +1,8 @@
 import React, { useContext, Fragment } from 'react';
 import { Store } from "../../store.js";
 import axios from "axios";
-import { Button, Loader } from 'semantic-ui-react'
 import { useHistory } from 'react-router-dom';
+import { Button, Spinner } from "@chakra-ui/core";
 
 const ImportTriviaButton = () => {
   const [state, dispatch] = useContext(Store);
@@ -42,7 +42,6 @@ const ImportTriviaButton = () => {
   const clickMe = () => {
     return (
       <Button
-        primary
         onClick={loadTrivia}
       >
         Click me to fetch trivia
@@ -52,7 +51,7 @@ const ImportTriviaButton = () => {
 
   const pleaseWait = () => {
     return (
-      <Loader active inline indeterminate>Loading trivia...</Loader>
+      <Spinner>Loading trivia...</Spinner>
     );
   }
 

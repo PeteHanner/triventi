@@ -4,15 +4,18 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { StoreProvider } from './store.js';
-import 'semantic-ui-css/semantic.min.css'
 import { BrowserRouter } from 'react-router-dom';
+import { ThemeProvider, CSSReset } from '@chakra-ui/core';
 
 
 ReactDOM.render(
   <StoreProvider>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <ThemeProvider>
+      <BrowserRouter>
+        <CSSReset />
+        <App />
+      </BrowserRouter>
+    </ThemeProvider>
   </StoreProvider>,
   document.getElementById('root')
   );
