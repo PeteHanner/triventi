@@ -1,15 +1,40 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import { Store } from "../../store.js";
 import { useHistory } from 'react-router-dom';
-import { Box, Button, Heading, Divider } from "@chakra-ui/core";
+import { Box, Button, Heading, Divider, Text } from "@chakra-ui/core";
 
 const TriviaCard = ({questionIdx}) => {
-  const [state] = useContext(Store);
   const history = useHistory();
+  const [state] = useContext(Store);
   const questionObj = state.questions[questionIdx];
 
+  const returnHomeIfQuestionNotLoaded = () => {
+    if (!questionObj) {
+      history.push('/')
+    }
+  }
+
+  useEffect(returnHomeIfQuestionNotLoaded, [])
+
+  const [options, setOptions] = useState([])
+
+  const shuffleOptions = () => {
+    if (questionObj) {
+      const shuffledOptions = [questionObj.correct_answer, ...questionObj.incorrect_answers];
+
+      for (let i = shuffledOptions.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffledOptions[i], shuffledOptions[j]] = [shuffledOptions[j], shuffledOptions[i]];
+      }
+    setOptions(shuffledOptions)
+    }
+  }
+
+  useEffect(shuffleOptions, [])
 
   return(
+    questionObj
+    ?
     <Box
       rounded="lg"
       textAlign="center"
@@ -17,40 +42,42 @@ const TriviaCard = ({questionIdx}) => {
       background="white"
       padding="2rem"
     >
-      <Heading as="h2" size="xl">CATEGORY</Heading>
+      <Heading as="h2" size="xl">{questionObj.category}</Heading>
       <Divider borderColor="black.600" />
-      <Heading as="h3" size="lg">QUESTION</Heading>
+      <Heading as="h3" size="lg">{questionObj.question}</Heading>
       <div className="buttons">
         <Button
           variantColor="blue"
           display="block"
           margin="1rem auto"
         >
-          ANSWER ONE
+          <Text>{options[0]}</Text>
         </Button>
         <Button 
           variantColor="yellow"
           display="block"
           margin="1rem auto"
         >
-          ANSWER TWO
+          <Text>{options[1]}</Text>
         </Button>
         <Button
           variantColor="pink"
           display="block"
           margin="1rem auto"
         >
-          ANSWER THREE
+          <Text>{options[2]}</Text>
         </Button>
         <Button 
           variantColor="teal" 
           display="block"
           margin="1rem auto"
         >
-          ANSWER FOUR
+          <Text>{options[3]}</Text>
         </Button>
       </div>
     </Box>
+    :
+    <div />
   )
 }
 
