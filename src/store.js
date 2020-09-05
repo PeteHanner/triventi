@@ -15,7 +15,7 @@ const Reducer = (state, action) => {
   case "FETCH_TRIVIA_FAILURE":
     const error = action.payload
     alert(`There was an error fetching trivia: ${error.message}. Please try again.`)
-    break;
+    return {...state, isFetching: false}
   case "QUESTION_CORRECT":
       return {...state, currentQuestionIdx: state.currentQuestionIdx + 1}
   case "QUESTION_INCORRECT":
