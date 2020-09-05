@@ -1,11 +1,11 @@
 import React, { useContext, Fragment } from 'react';
-import { Store } from "../../store.js";
+import { Context } from "../../store.js";
 import axios from "axios";
 import { useHistory } from 'react-router-dom';
 import { Button, Spinner } from "@chakra-ui/core";
 
 const ImportTriviaButton = () => {
-  const [state, dispatch] = useContext(Store);
+  const [state, dispatch] = useContext(Context);
   const history = useHistory();
 
   const loadTrivia = () => {

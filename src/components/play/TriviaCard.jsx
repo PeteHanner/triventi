@@ -1,11 +1,11 @@
 import React, {useContext, useEffect, useState} from 'react';
-import { Store } from "../../store.js";
+import { Context } from "../../store.js";
 import { useHistory } from 'react-router-dom';
 import { Box, Button, Heading, Divider, Text } from "@chakra-ui/core";
 
 const TriviaCard = ({questionIdx}) => {
   const history = useHistory();
-  const [state] = useContext(Store);
+  const [state] = useContext(Context);
   const questionObj = state.questions[questionIdx];
 
   const returnHomeIfQuestionNotLoaded = () => {
