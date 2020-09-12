@@ -10,37 +10,37 @@ const TriviaCard = ({ category, question, options }) => {
       background="white"
       padding="2rem"
     >
-      <Heading as="h2" size="xl">{category}</Heading>
+      <Heading as="h2" size="xl">{decodeURIComponent(category)}</Heading>
       <Divider borderColor="black.600" />
-      <Heading as="h3" size="lg">{question}</Heading>
+      <Heading as="h3" size="lg">{decodeURIComponent(question)}</Heading>
       <div className="buttons">
         <Button
           variantColor="blue"
           display="block"
           margin="1rem auto"
         >
-          <Text>{options[0]}</Text>
+          <Text>{decodeURIComponent(options[0])}</Text>
         </Button>
         <Button
           variantColor="yellow"
           display="block"
           margin="1rem auto"
         >
-          <Text>{options[1]}</Text>
+          <Text>{decodeURIComponent(options[1])}</Text>
         </Button>
         <Button
           variantColor="pink"
           display="block"
           margin="1rem auto"
         >
-          <Text>{options[2]}</Text>
+          <Text>{decodeURIComponent(options[2])}</Text>
         </Button>
         <Button
           variantColor="teal"
           display="block"
           margin="1rem auto"
         >
-          <Text>{options[3]}</Text>
+          <Text>{decodeURIComponent(options[3])}</Text>
         </Button>
       </div>
     </Box>

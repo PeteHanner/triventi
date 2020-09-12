@@ -12,16 +12,16 @@ const ImportTriviaButton = () => {
     dispatch({ type: "FETCH_TRIVIA_START" })
     const questions = [];
 
-    axios.get("https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple")
+    axios.get("https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple&encode=url3986")
       .then(response => {
         const easyQuestions = response.data.results;
         questions.push(...easyQuestions);
-        return axios.get("https://opentdb.com/api.php?amount=10&difficulty=medium&type=multiple")
+        return axios.get("https://opentdb.com/api.php?amount=10&difficulty=medium&type=multiple&encode=url3986")
       })
       .then(response => {
         const mediumQuestions = response.data.results;
         questions.push(...mediumQuestions);
-        return axios.get("https://opentdb.com/api.php?amount=10&difficulty=hard&type=multiple")
+        return axios.get("https://opentdb.com/api.php?amount=10&difficulty=hard&type=multiple&encode=url3986")
       })
       .then(response => {
         const hardQuestions = response.data.results;
