@@ -21,7 +21,7 @@ const TriviaCard = ({ category, question, options }) => {
         >
           <Text>{options[0]}</Text>
         </Button>
-        <Button 
+        <Button
           variantColor="yellow"
           display="block"
           margin="1rem auto"
@@ -35,8 +35,8 @@ const TriviaCard = ({ category, question, options }) => {
         >
           <Text>{options[2]}</Text>
         </Button>
-        <Button 
-          variantColor="teal" 
+        <Button
+          variantColor="teal"
           display="block"
           margin="1rem auto"
         >
