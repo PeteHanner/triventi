@@ -1,26 +1,25 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Context } from "../../store.js";
-import TriviaCard from './TriviaCard.jsx';
+import { Context } from '../../store';
+import TriviaCard from './TriviaCard';
 
 const GamePage = () => {
-  // initialize values
-  const [state] = useContext(Context);
+  const [state, dispatch] = useContext(Context);
   const history = useHistory();
 
   const { currentQuestionIdx } = state;
   const questionObj = state.questions[currentQuestionIdx];
-  let { category, question } = questionObj || "";
+  const { category, question } = questionObj || '';
 
   const returnHomeIfQuestionsNotLoaded = () => {
     if (!questionObj) {
-      history.push('/')
+      history.push('/');
     }
-  }
+  };
 
-  useEffect(returnHomeIfQuestionsNotLoaded, [])
+  useEffect(returnHomeIfQuestionsNotLoaded, []);
 
-  const [options, setOptions] = useState([])
+  const [options, setOptions] = useState([]);
 
   const shuffleOptions = () => {
     if (questionObj) {
@@ -31,19 +30,19 @@ const GamePage = () => {
         [shuffledOptions[i], shuffledOptions[j]] = [shuffledOptions[j], shuffledOptions[i]];
       }
 
-      setOptions(shuffledOptions)
+      setOptions(shuffledOptions);
     }
-  }
+  };
 
-  useEffect(shuffleOptions, [])
+  useEffect(shuffleOptions, []);
 
-  return(
-    <div className='main-window'>
+  return (
+    <div className="main-window">
       <TriviaCard
         {...{ category, question, options }}
       />
     </div>
-    )
-  }
+  );
+};
 
-  export default GamePage
+export default GamePage;
