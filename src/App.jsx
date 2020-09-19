@@ -5,12 +5,12 @@ import WelcomePage from './components/root/WelcomePage';
 import GamePage from './components/play/GamePage';
 
 function App() {
-  return(
+  return (
     <Switch>
-      <Route path='/' component={WelcomePage} exact />
-      <Route path='/play' component={GamePage} />
+      <Route path="/" component={WelcomePage} exact />
+      <Route path="/play" component={GamePage} />
     </Switch>
-  )
+  );
 }
 
 export default App;
