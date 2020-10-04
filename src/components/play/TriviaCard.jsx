@@ -13,6 +13,7 @@ const TriviaCard = ({
     borderWidth="2px"
     background="white"
     padding="2rem"
+    width="85vw"
   >
     <Heading as="h2" size="xl">{decodeURIComponent(category)}</Heading>
     <Divider borderColor="black.600" />
