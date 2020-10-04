@@ -4,6 +4,7 @@ const initialState = {
   isFetching: false,
   questions: [],
   currentQuestionIdx: 0,
+  score: 0,
 };
 
 const Reducer = (state, action) => {
@@ -18,7 +19,7 @@ const Reducer = (state, action) => {
       return { ...state, isFetching: false };
     }
     case 'QUESTION_CORRECT':
-      return { ...state, currentQuestionIdx: state.currentQuestionIdx + 1 };
+      return { ...state, currentQuestionIdx: state.currentQuestionIdx + 1, score: state.score + 1 };
     case 'QUESTION_INCORRECT':
       return { ...state, currentQuestionIdx: state.currentQuestionIdx + 1 };
     default:

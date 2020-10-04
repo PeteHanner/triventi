@@ -8,11 +8,11 @@ const GamePage = () => {
   const history = useHistory();
 
   const { currentQuestionIdx } = state;
-  const questionObj = state.questions[currentQuestionIdx];
+  const questionObj = state.questions[currentQuestionIdx] || { correct_answer: null, incorrect_answers: [null]};
   const { category, question } = questionObj || '';
 
   const returnHomeIfQuestionsNotLoaded = () => {
-    if (!questionObj) {
+    if (!questionObj.correct_answer) {
       history.push('/');
     }
   };
@@ -22,22 +22,24 @@ const GamePage = () => {
   const [options, setOptions] = useState([]);
 
   const shuffleOptions = () => {
-    if (questionObj) {
-      const shuffledOptions = [questionObj.correct_answer, ...questionObj.incorrect_answers];
+    const shuffledOptions = [questionObj.correct_answer, ...questionObj.incorrect_answers];
 
-      for (let i = shuffledOptions.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffledOptions[i], shuffledOptions[j]] = [shuffledOptions[j], shuffledOptions[i]];
-      }
-
-      setOptions(shuffledOptions);
+    for (let i = shuffledOptions.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledOptions[i], shuffledOptions[j]] = [shuffledOptions[j], shuffledOptions[i]];
     }
+
+    setOptions(shuffledOptions);
   };
 
   useEffect(shuffleOptions, [currentQuestionIdx]);
 
-  const checkAnswer = () => {
-    dispatch({ type: 'QUESTION_CORRECT' });
+  const checkAnswer = (answerGiven) => {
+    if (answerGiven === questionObj.correct_answer) {
+      dispatch({ type: 'QUESTION_CORRECT' });
+    } else {
+      dispatch({ type: 'QUESTION_INCORRECT' });
+    }
   };
 
   return (

@@ -23,7 +23,7 @@ const TriviaCard = ({
         variantColor="blue"
         display="block"
         margin="1rem auto"
-        onClick={checkAnswer}
+        onClick={() => checkAnswer(options[0])}
       >
         <Text>{decodeURIComponent(options[0])}</Text>
       </Button>
@@ -31,7 +31,7 @@ const TriviaCard = ({
         variantColor="yellow"
         display="block"
         margin="1rem auto"
-        onClick={checkAnswer}
+        onClick={() => checkAnswer(options[1])}
       >
         <Text>{decodeURIComponent(options[1])}</Text>
       </Button>
@@ -39,7 +39,7 @@ const TriviaCard = ({
         variantColor="pink"
         display="block"
         margin="1rem auto"
-        onClick={checkAnswer}
+        onClick={() => checkAnswer(options[2])}
       >
         <Text>{decodeURIComponent(options[2])}</Text>
       </Button>
@@ -47,7 +47,7 @@ const TriviaCard = ({
         variantColor="teal"
         display="block"
         margin="1rem auto"
-        onClick={checkAnswer}
+        onClick={() => checkAnswer(options[3])}
       >
         <Text>{decodeURIComponent(options[3])}</Text>
       </Button>
