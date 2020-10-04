@@ -4,13 +4,16 @@ import {
   Box, Button, Heading, Divider, Text,
 } from '@chakra-ui/core';
 
-const TriviaCard = ({ category, question, options }) => (
+const TriviaCard = ({
+  category, question, options, checkAnswer,
+}) => (
   <Box
     rounded="lg"
     textAlign="center"
     borderWidth="2px"
     background="white"
     padding="2rem"
+    width="85vw"
   >
     <Heading as="h2" size="xl">{decodeURIComponent(category)}</Heading>
     <Divider borderColor="black.600" />
@@ -20,6 +23,7 @@ const TriviaCard = ({ category, question, options }) => (
         variantColor="blue"
         display="block"
         margin="1rem auto"
+        onClick={checkAnswer}
       >
         <Text>{decodeURIComponent(options[0])}</Text>
       </Button>
@@ -27,6 +31,7 @@ const TriviaCard = ({ category, question, options }) => (
         variantColor="yellow"
         display="block"
         margin="1rem auto"
+        onClick={checkAnswer}
       >
         <Text>{decodeURIComponent(options[1])}</Text>
       </Button>
@@ -34,6 +39,7 @@ const TriviaCard = ({ category, question, options }) => (
         variantColor="pink"
         display="block"
         margin="1rem auto"
+        onClick={checkAnswer}
       >
         <Text>{decodeURIComponent(options[2])}</Text>
       </Button>
@@ -41,6 +47,7 @@ const TriviaCard = ({ category, question, options }) => (
         variantColor="teal"
         display="block"
         margin="1rem auto"
+        onClick={checkAnswer}
       >
         <Text>{decodeURIComponent(options[3])}</Text>
       </Button>
@@ -57,6 +64,7 @@ TriviaCard.propTypes = {
   category: PropTypes.string,
   question: PropTypes.string,
   options: PropTypes.arrayOf(PropTypes.string),
+  checkAnswer: PropTypes.func.isRequired,
 };
 
 export default TriviaCard;

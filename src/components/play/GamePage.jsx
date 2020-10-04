@@ -34,12 +34,18 @@ const GamePage = () => {
     }
   };
 
-  useEffect(shuffleOptions, []);
+  useEffect(shuffleOptions, [currentQuestionIdx]);
+
+  const checkAnswer = () => {
+    dispatch({ type: 'QUESTION_CORRECT' });
+  };
 
   return (
     <div className="main-window">
       <TriviaCard
-        {...{ category, question, options }}
+        {...{
+          category, question, options, checkAnswer,
+        }}
       />
     </div>
   );
