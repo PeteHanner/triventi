@@ -12,7 +12,11 @@ const ScoreCounter = () => {
       background="white"
       padding=".5rem"
       margin="1rem"
+      position="absolute"
+      top="1rem"
+      left="1rem"
     >
+      <Text fontWeight="bold">Score:</Text>
       <Text fontWeight="bold">
         {state.score}
       </Text>
