@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Context } from '../../store';
+import ScoreCounter from './ScoreCounter';
 import TriviaCard from './TriviaCard';
 
 const GamePage = () => {
@@ -8,7 +9,10 @@ const GamePage = () => {
   const history = useHistory();
 
   const { currentQuestionIdx } = state;
-  const questionObj = state.questions[currentQuestionIdx] || { correct_answer: null, incorrect_answers: [null]};
+  const questionObj = state.questions[currentQuestionIdx] || {
+    correct_answer: null,
+    incorrect_answers: [null],
+  };
   const { category, question } = questionObj || '';
 
   const returnHomeIfQuestionsNotLoaded = () => {
@@ -24,7 +28,7 @@ const GamePage = () => {
   const shuffleOptions = () => {
     const shuffledOptions = [questionObj.correct_answer, ...questionObj.incorrect_answers];
 
-    for (let i = shuffledOptions.length - 1; i > 0; i--) {
+    for (let i = shuffledOptions.length - 1; i > 0; i -= 1) {
       const j = Math.floor(Math.random() * (i + 1));
       [shuffledOptions[i], shuffledOptions[j]] = [shuffledOptions[j], shuffledOptions[i]];
     }
@@ -44,6 +48,7 @@ const GamePage = () => {
 
   return (
     <div className="main-window">
+      <ScoreCounter />
       <TriviaCard
         {...{
           category, question, options, checkAnswer,
