@@ -38,16 +38,34 @@ const GamePage = () => {
 
   useEffect(shuffleOptions, [currentQuestionIdx]);
 
+  const flashCorrect = () => {
+    document.getElementById('main-window').classList.add('flash-correct');
+
+    setTimeout(() => {
+      document.getElementById('main-window').classList.remove('flash-correct');
+    }, 300);
+  };
+
+  const flashIncorrect = () => {
+    document.getElementById('main-window').classList.add('flash-incorrect');
+
+    setTimeout(() => {
+      document.getElementById('main-window').classList.remove('flash-incorrect');
+    }, 500);
+  };
+
   const checkAnswer = (answerGiven) => {
     if (answerGiven === questionObj.correct_answer) {
+      flashCorrect();
       dispatch({ type: 'QUESTION_CORRECT' });
     } else {
+      flashIncorrect();
       dispatch({ type: 'QUESTION_INCORRECT' });
     }
   };
 
   return (
-    <div className="main-window">
+    <div id="main-window">
       <ScoreCounter />
       <TriviaCard
         {...{

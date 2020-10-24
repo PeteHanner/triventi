@@ -1,4 +1,4 @@
-.main-window {
+#main-window {
   min-height: 100vh;
   min-width: 100vw;
   display: flex;
@@ -7,6 +7,40 @@
   justify-content: center;
   text-align: center;
   background-color: rgb(56, 64, 90);
+}
+
+@keyframes correct-flash {
+  0% { background-color: rgb(56, 64, 90); }
+  50% { background-color: rgb(51, 163, 2); }
+  100% { background-color: rgb(56, 64, 90); }
+}
+
+@-o-keyframes correct-flash {
+  0% { background-color: rgb(56, 64, 90); }
+  50% { background-color: rgb(51, 163, 2); }
+  100% { background-color: rgb(56, 64, 90); }
+}
+
+.flash-correct {
+  -o-animation: correct-flash 0.3s ease-in-out;
+  animation: correct-flash 0.3s ease-in-out;
+}
+
+@keyframes incorrect-flash {
+  0% { background-color: rgb(56, 64, 90); }
+  50% { background-color: rgb(248, 0, 0);; }
+  100% { background-color: rgb(56, 64, 90); }
+}
+
+@-o-keyframes incorrect-flash {
+  0% { background-color: rgb(56, 64, 90); }
+  50% { background-color: rgb(248, 0, 0);; }
+  100% { background-color: rgb(56, 64, 90); }
+}
+
+.flash-incorrect {
+  -o-animation: incorrect-flash 0.3s ease-in-out;
+  animation: incorrect-flash 0.3s ease-in-out;
 }
 
 .gap {
