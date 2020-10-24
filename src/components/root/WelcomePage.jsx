@@ -4,7 +4,7 @@ import { Heading } from '@chakra-ui/core';
 
 const WelcomePage = () => {
   return(
-    <div className='main-window'>
+    <div id='main-window'>
       <Heading as='h1' className="white">
         Welcome to Triventi!
       </Heading>
