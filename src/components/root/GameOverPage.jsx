@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { Heading } from '@chakra-ui/core';
+import { Heading, Text } from '@chakra-ui/core';
 import { Context } from '../../store';
 
 const GameOverPage = () => {
@@ -21,6 +21,9 @@ const GameOverPage = () => {
       <Heading as="h1" color="white">
         Game Over
       </Heading>
+      <Text color="white">
+        {`You got ${state.score} points in a time of X:XX.XX`}
+      </Text>
     </div>
   );
 };

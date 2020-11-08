@@ -3,7 +3,7 @@ import { Box, Text } from '@chakra-ui/core';
 import { Context } from '../../store';
 
 const ScoreCounter = () => {
-  const [state, dispatch] = useContext(Context);
+  const [state] = useContext(Context);
 
   return (
     <Box
