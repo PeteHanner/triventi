@@ -3,7 +3,7 @@ import './App.scss';
 import { Switch, Route } from 'react-router-dom';
 import WelcomePage from './components/root/WelcomePage';
 import GamePage from './components/play/GamePage';
-import { GameOverPage } from './components/root/GameOverPage';
+import GameOverPage from './components/root/GameOverPage';
 
 function App() {
   return (

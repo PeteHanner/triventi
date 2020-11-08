@@ -11,6 +11,7 @@ const Timer = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       dispatch({ type: 'INCREMENT_COUNTER' });
+      console.log(counter);
 
       const minuteCounter = Math.floor((counter / 10) / 60);
       setMinute(minuteCounter);
