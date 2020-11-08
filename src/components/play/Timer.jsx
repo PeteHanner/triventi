@@ -4,7 +4,6 @@ import { Context } from '../../store';
 
 const Timer = () => {
   const [state, dispatch] = useContext(Context);
-  // const [counter, setCounter] = useState(0);
   const counter = state.currentTime;
   const [minute, setMinute] = useState('0');
   const [second, setSecond] = useState('00');
