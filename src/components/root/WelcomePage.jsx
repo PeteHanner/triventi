@@ -1,17 +1,15 @@
 import React from 'react';
-import ImportTriviaButton from './ImportTriviaButton';
 import { Heading } from '@chakra-ui/core';
+import ImportTriviaButton from './ImportTriviaButton';
 
-const WelcomePage = () => {
-  return(
-    <div id='main-window'>
-      <Heading as='h1' className="white">
-        Welcome to Triventi!
-      </Heading>
+const WelcomePage = () => (
+  <div id="main-window">
+    <Heading as="h1" className="white">
+      Welcome to Triventi!
+    </Heading>
 
-      <ImportTriviaButton/>
-    </div>
-  )
-}
+    <ImportTriviaButton />
+  </div>
+);
 
-export default WelcomePage
+export default WelcomePage;
