@@ -40,6 +40,11 @@ const Reducer = (state, action) => {
         ...state,
         currentQuestionIdx: state.currentQuestionIdx + 1,
       };
+    case 'GAME_OVER':
+      return {
+        ...state,
+        finalTime: action.payload,
+      };
     default:
       throw new Error();
   }
