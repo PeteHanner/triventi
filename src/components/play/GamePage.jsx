@@ -37,11 +37,9 @@ const GamePage = () => {
     setOptions(shuffledOptions);
   };
 
-  const endGame = (finalTime) => {
-    dispatch({
-      type: 'GAME_OVER',
-      payload: finalTime,
-    });
+  const endGame = () => {
+    dispatch({ type: 'GAME_OVER' });
+    history.push('/game-over');
   };
 
   const shuffleOptionsOrEndGame = () => {
@@ -83,7 +81,7 @@ const GamePage = () => {
   return (
     <div id="main-window">
       <ScoreCounter />
-      <Timer {...{endGame}} />
+      <Timer {...{ endGame }} />
       <TriviaCard
         {...{
           category, question, options, checkAnswer,
