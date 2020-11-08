@@ -37,7 +37,22 @@ const GamePage = () => {
     setOptions(shuffledOptions);
   };
 
-  useEffect(shuffleOptions, [currentQuestionIdx]);
+  const endGame = (finalTime) => {
+    dispatch({
+      type: 'GAME_OVER',
+      payload: finalTime,
+    });
+  };
+
+  const shuffleOptionsOrEndGame = () => {
+    if (currentQuestionIdx < 30) {
+      shuffleOptions();
+    } else {
+      endGame();
+    }
+  };
+
+  useEffect(shuffleOptionsOrEndGame, [currentQuestionIdx]);
 
   const flashCorrect = () => {
     document.getElementById('main-window').classList.add('flash-correct');
