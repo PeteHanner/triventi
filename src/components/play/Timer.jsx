@@ -4,14 +4,14 @@ import { Context } from '../../store';
 
 const Timer = () => {
   const [state, dispatch] = useContext(Context);
-  const [counter, setCounter] = useState(0);
+  // const [counter, setCounter] = useState(0);
+  const counter = state.currentTime;
   const [minute, setMinute] = useState('0');
   const [second, setSecond] = useState('00');
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const increment = counter + 1;
-      setCounter(increment);
+      dispatch({ type: 'INCREMENT_COUNTER' });
 
       const minuteCounter = Math.floor((counter / 10) / 60);
       setMinute(minuteCounter);

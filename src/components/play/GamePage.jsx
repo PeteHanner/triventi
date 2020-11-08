@@ -83,7 +83,7 @@ const GamePage = () => {
   return (
     <div id="main-window">
       <ScoreCounter />
-      <Timer />
+      <Timer {...{endGame}} />
       <TriviaCard
         {...{
           category, question, options, checkAnswer,

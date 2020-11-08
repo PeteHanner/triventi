@@ -5,6 +5,7 @@ const initialState = {
   questions: [],
   currentQuestionIdx: 0,
   score: 0,
+  currentTime: 0,
   finalTime: 0,
 };
 
@@ -29,6 +30,11 @@ const Reducer = (state, action) => {
         isFetching: false,
       };
     }
+    case 'INCREMENT_COUNTER':
+      return {
+        ...state,
+        currentTime: state.currentTime + 1,
+      };
     case 'QUESTION_CORRECT':
       return {
         ...state,
