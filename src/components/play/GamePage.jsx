@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import Timer from './Timer';
 import { Context } from '../../store';
 import ScoreCounter from './ScoreCounter';
 import TriviaCard from './TriviaCard';
@@ -67,6 +68,7 @@ const GamePage = () => {
   return (
     <div id="main-window">
       <ScoreCounter />
+      <Timer />
       <TriviaCard
         {...{
           category, question, options, checkAnswer,
