@@ -5,7 +5,7 @@ import { calculateMinutes, calculateSecondsRemainder } from '../../utils/time';
 
 const Timer = () => {
   const [state, dispatch] = useContext(Context);
-  const timer = state.timer;
+  const { timer } = state;
   const [minute, setMinute] = useState('0');
   const [second, setSecond] = useState('00');
 

@@ -1,12 +1,13 @@
 import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-
 import { Heading, Text } from '@chakra-ui/core';
 import { Context } from '../../store';
+import { calculateMinutes, calculateSecondsRemainder } from '../../utils/time';
 
 const GameOverPage = () => {
-  const [state] = useContext(Context);
   const history = useHistory();
+  const [state] = useContext(Context);
+  const { timer } = state;
 
   const returnHomeIfQuestionsNotLoaded = () => {
     if (state.questions.length < 1) {
@@ -22,7 +23,7 @@ const GameOverPage = () => {
         Game Over
       </Heading>
       <Text color="white">
-        {`You got ${state.score} points in a time of X:XX.XX`}
+        {`You got ${state.score} points in a time of ${calculateMinutes(timer)}:${calculateSecondsRemainder(timer)}`}
       </Text>
     </div>
   );
