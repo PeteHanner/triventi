@@ -9,6 +9,7 @@ const Timer = () => {
   const [second, setSecond] = useState('00');
 
   useEffect(() => {
+    let isSubscribed = true;
     const interval = setInterval(() => {
       dispatch({ type: 'INCREMENT_COUNTER' });
       console.log(counter);
@@ -20,7 +21,10 @@ const Timer = () => {
       setSecond(String(secondCounter).padStart(2, '0'));
     }, 100);
 
-    return () => clearInterval(interval);
+    return () => {
+      isSubscribed = false;
+      clearInterval(interval);
+    };
   }, [counter]);
 
   return (
