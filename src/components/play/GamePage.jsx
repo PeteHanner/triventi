@@ -37,7 +37,19 @@ const GamePage = () => {
     setOptions(shuffledOptions);
   };
 
-  useEffect(shuffleOptions, [currentQuestionIdx]);
+  const endGame = () => {
+    history.push('/game-over');
+  };
+
+  const shuffleOptionsOrEndGame = () => {
+    if (currentQuestionIdx < 30) {
+      shuffleOptions();
+    } else {
+      endGame();
+    }
+  };
+
+  useEffect(shuffleOptionsOrEndGame, [currentQuestionIdx]);
 
   const flashCorrect = () => {
     document.getElementById('main-window').classList.add('flash-correct');
@@ -68,7 +80,7 @@ const GamePage = () => {
   return (
     <div id="main-window">
       <ScoreCounter />
-      <Timer />
+      <Timer {...{ endGame }} />
       <TriviaCard
         {...{
           category, question, options, checkAnswer,

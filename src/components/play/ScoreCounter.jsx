@@ -3,7 +3,7 @@ import { Box, Text } from '@chakra-ui/core';
 import { Context } from '../../store';
 
 const ScoreCounter = () => {
-  const [state, dispatch] = useContext(Context);
+  const [state] = useContext(Context);
 
   return (
     <Box
@@ -15,6 +15,7 @@ const ScoreCounter = () => {
       position="absolute"
       top="1rem"
       left="1%"
+      minWidth="5rem"
     >
       <Text fontWeight="bold">Score:</Text>
       <Text fontWeight="bold">

@@ -1,27 +1,28 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Box, Text } from '@chakra-ui/core';
 import { Context } from '../../store';
+import { calculateMinutes, calculateSecondsRemainder } from '../../utils/time';
 
 const Timer = () => {
   const [state, dispatch] = useContext(Context);
-  const [counter, setCounter] = useState(0);
+  const { timer } = state;
   const [minute, setMinute] = useState('0');
   const [second, setSecond] = useState('00');
 
   useEffect(() => {
+    let isSubscribed = true;
     const interval = setInterval(() => {
-      const increment = counter + 1;
-      setCounter(increment);
+      dispatch({ type: 'INCREMENT_TIMER' });
 
-      const minuteCounter = Math.floor((counter / 10) / 60);
-      setMinute(minuteCounter);
-
-      const secondCounter = Math.round((counter / 10) % 60);
-      setSecond(String(secondCounter).padStart(2, '0'));
+      setMinute(calculateMinutes(timer));
+      setSecond(calculateSecondsRemainder(timer));
     }, 100);
 
-    return () => clearInterval(interval);
-  }, [counter]);
+    return () => {
+      isSubscribed = false;
+      clearInterval(interval);
+    };
+  }, [timer]);
 
   return (
     <Box
@@ -33,6 +34,7 @@ const Timer = () => {
       position="absolute"
       top="1rem"
       left="93%"
+      minWidth="5rem"
     >
       <Text fontWeight="bold">Time:</Text>
       <Text fontWeight="bold">
