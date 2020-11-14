@@ -4,28 +4,27 @@ import { Context } from '../../store';
 
 const Timer = () => {
   const [state, dispatch] = useContext(Context);
-  const counter = state.currentTime;
+  const timer = state.timer;
   const [minute, setMinute] = useState('0');
   const [second, setSecond] = useState('00');
 
   useEffect(() => {
     let isSubscribed = true;
     const interval = setInterval(() => {
-      dispatch({ type: 'INCREMENT_COUNTER' });
-      console.log(counter);
+      dispatch({ type: 'INCREMENT_timer' });
 
-      const minuteCounter = Math.floor((counter / 10) / 60);
-      setMinute(minuteCounter);
+      const minuteTimer = Math.floor((timer / 10) / 60);
+      setMinute(minuteTimer);
 
-      const secondCounter = Math.round((counter / 10) % 60);
-      setSecond(String(secondCounter).padStart(2, '0'));
+      const secondTimer = Math.round((timer / 10) % 60);
+      setSecond(String(secondTimer).padStart(2, '0'));
     }, 100);
 
     return () => {
       isSubscribed = false;
       clearInterval(interval);
     };
-  }, [counter]);
+  }, [timer]);
 
   return (
     <Box

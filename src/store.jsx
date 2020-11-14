@@ -5,8 +5,7 @@ const initialState = {
   questions: [],
   currentQuestionIdx: 0,
   score: 0,
-  currentTime: 0,
-  finalTime: 0,
+  timer: 0,
 };
 
 const Reducer = (state, action) => {
@@ -33,7 +32,7 @@ const Reducer = (state, action) => {
     case 'INCREMENT_COUNTER':
       return {
         ...state,
-        currentTime: state.currentTime + 1,
+        timer: state.timer + 1,
       };
     case 'QUESTION_CORRECT':
       return {
@@ -45,11 +44,6 @@ const Reducer = (state, action) => {
       return {
         ...state,
         currentQuestionIdx: state.currentQuestionIdx + 1,
-      };
-    case 'GAME_OVER':
-      return {
-        ...state,
-        finalTime: action.payload,
       };
     default:
       throw new Error();

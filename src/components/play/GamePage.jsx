@@ -38,7 +38,6 @@ const GamePage = () => {
   };
 
   const endGame = () => {
-    dispatch({ type: 'GAME_OVER' });
     history.push('/game-over');
   };
 
