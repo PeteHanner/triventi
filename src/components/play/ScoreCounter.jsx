@@ -15,6 +15,7 @@ const ScoreCounter = () => {
       position="absolute"
       top="1rem"
       left="1%"
+      minWidth="5rem"
     >
       <Text fontWeight="bold">Score:</Text>
       <Text fontWeight="bold">

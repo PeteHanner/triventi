@@ -34,6 +34,7 @@ const Timer = () => {
       position="absolute"
       top="1rem"
       left="93%"
+      minWidth="5rem"
     >
       <Text fontWeight="bold">Time:</Text>
       <Text fontWeight="bold">
