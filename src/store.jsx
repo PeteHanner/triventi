@@ -29,7 +29,7 @@ const Reducer = (state, action) => {
         isFetching: false,
       };
     }
-    case 'INCREMENT_COUNTER':
+    case 'INCREMENT_TIMER':
       return {
         ...state,
         timer: state.timer + 1,

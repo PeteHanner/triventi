@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Box, Text } from '@chakra-ui/core';
 import { Context } from '../../store';
+import { calculateMinutes, calculateSecondsRemainder } from '../../utils/time';
 
 const Timer = () => {
   const [state, dispatch] = useContext(Context);
@@ -11,13 +12,10 @@ const Timer = () => {
   useEffect(() => {
     let isSubscribed = true;
     const interval = setInterval(() => {
-      dispatch({ type: 'INCREMENT_timer' });
+      dispatch({ type: 'INCREMENT_TIMER' });
 
-      const minuteTimer = Math.floor((timer / 10) / 60);
-      setMinute(minuteTimer);
-
-      const secondTimer = Math.round((timer / 10) % 60);
-      setSecond(String(secondTimer).padStart(2, '0'));
+      setMinute(calculateMinutes(timer));
+      setSecond(calculateSecondsRemainder(timer));
     }, 100);
 
     return () => {
