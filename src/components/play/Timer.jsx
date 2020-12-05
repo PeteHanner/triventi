@@ -1,18 +1,20 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useCallback } from 'react';
 import { Box, Text } from '@chakra-ui/core';
 import { Context } from '../../store';
 import { calculateMinutes, calculateSecondsRemainder } from '../../utils/time';
 
 const Timer = () => {
   const [state, dispatch] = useContext(Context);
+  const stableDispatch = useCallback(dispatch, []);
   const { timer } = state;
   const [minute, setMinute] = useState('0');
   const [second, setSecond] = useState('00');
 
   useEffect(() => {
+    // eslint-disable-next-line no-unused-vars
     let isSubscribed = true;
     const interval = setInterval(() => {
-      dispatch({ type: 'INCREMENT_TIMER' });
+      stableDispatch({ type: 'INCREMENT_TIMER' });
 
       setMinute(calculateMinutes(timer));
       setSecond(calculateSecondsRemainder(timer));
@@ -22,7 +24,7 @@ const Timer = () => {
       isSubscribed = false;
       clearInterval(interval);
     };
-  }, [timer]);
+  }, [timer, stableDispatch]);
 
   return (
     <Box
