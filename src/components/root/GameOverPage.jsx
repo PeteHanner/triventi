@@ -11,7 +11,7 @@ const GameOverPage = () => {
 
   const returnHomeIfQuestionsNotLoaded = () => {
     if (state.questions.length < 1) {
-      history.push('/');
+      history.push('/triventi');
     }
   };
 

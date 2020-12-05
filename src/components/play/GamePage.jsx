@@ -18,7 +18,7 @@ const GamePage = () => {
 
   const returnHomeIfQuestionsNotLoaded = () => {
     if (!questionObj.correct_answer) {
-      history.push('/');
+      history.push('/triventi');
     }
   };
 

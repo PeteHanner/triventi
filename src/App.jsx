@@ -8,7 +8,7 @@ import GameOverPage from './components/root/GameOverPage';
 function App() {
   return (
     <Switch>
-      <Route path="/triventi" component={WelcomePage} exact />
+      <Route path="/triventi" component={WelcomePage} />
       <Route path="/play" component={GamePage} />
       <Route path="/game-over" component={GameOverPage} />
     </Switch>
