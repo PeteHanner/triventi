@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/triventi/static/css/main.67cc3542.chunk.css",
-    "main.js": "/triventi/static/js/main.321f2214.chunk.js",
-    "main.js.map": "/triventi/static/js/main.321f2214.chunk.js.map",
+    "main.js": "/triventi/static/js/main.a9b7c835.chunk.js",
+    "main.js.map": "/triventi/static/js/main.a9b7c835.chunk.js.map",
     "runtime-main.js": "/triventi/static/js/runtime-main.014cbab9.js",
     "runtime-main.js.map": "/triventi/static/js/runtime-main.014cbab9.js.map",
     "static/js/2.407cae37.chunk.js": "/triventi/static/js/2.407cae37.chunk.js",
     "static/js/2.407cae37.chunk.js.map": "/triventi/static/js/2.407cae37.chunk.js.map",
     "index.html": "/triventi/index.html",
-    "precache-manifest.fe3e128af3da21c83f764e557d18e422.js": "/triventi/precache-manifest.fe3e128af3da21c83f764e557d18e422.js",
+    "precache-manifest.fc2d2db8a9e1cb7a5ec3c9b38f3a5b94.js": "/triventi/precache-manifest.fc2d2db8a9e1cb7a5ec3c9b38f3a5b94.js",
     "service-worker.js": "/triventi/service-worker.js",
     "static/css/main.67cc3542.chunk.css.map": "/triventi/static/css/main.67cc3542.chunk.css.map",
     "static/js/2.407cae37.chunk.js.LICENSE.txt": "/triventi/static/js/2.407cae37.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.014cbab9.js",
     "static/js/2.407cae37.chunk.js",
     "static/css/main.67cc3542.chunk.css",
-    "static/js/main.321f2214.chunk.js"
+    "static/js/main.a9b7c835.chunk.js"
   ]
 }
