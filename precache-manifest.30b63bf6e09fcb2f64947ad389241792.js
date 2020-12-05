@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1a2ed9c4a09cbd6676b67183ec747d5b",
+    "revision": "3d37ae0b0761dca03e1be95355d5a68f",
     "url": "/triventi/index.html"
   },
   {
-    "revision": "ecfaf8a37fdb11644b8c",
+    "revision": "03603ff61652522a71f8",
     "url": "/triventi/static/css/main.67cc3542.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/triventi/static/js/2.407cae37.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "ecfaf8a37fdb11644b8c",
-    "url": "/triventi/static/js/main.a9b7c835.chunk.js"
+    "revision": "03603ff61652522a71f8",
+    "url": "/triventi/static/js/main.2c58d60f.chunk.js"
   },
   {
     "revision": "fd5af91ebaa08a2deb0f",
