@@ -10,7 +10,7 @@ import { StoreProvider } from './store';
 ReactDOM.render(
   <StoreProvider>
     <ThemeProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/triventi">
         <CSSReset />
         <App />
       </BrowserRouter>
